@@ -12,6 +12,7 @@
     v-bind="settings"
   >
     <setting-drawer :settings="settings" @change="handleSettingChange" />
+    <multi-tab v-if="multiTab"></multi-tab>
     <template v-slot:rightContentRender>
       <right-content :top-menu="settings.layout === 'topmenu'" :theme="settings.theme" />
     </template>
@@ -19,11 +20,13 @@
       <global-footer />
     </template>
     <router-view />
+    <back-top v-if="backTop"/>
   </pro-layout>
 </template>
 
 <script>
 import { SettingDrawer } from '@ant-design-vue/pro-layout'
+import { BackTop } from 'ant-design-vue'
 import { i18nRender } from '@/locales'
 import { mapState } from 'vuex'
 import { SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mutation-types'
@@ -38,11 +41,14 @@ export default {
   components: {
     SettingDrawer,
     RightContent,
-    GlobalFooter
+    GlobalFooter,
+    BackTop
   },
   data () {
     return {
       title: config.title,
+      multiTab: config.multiTab,
+      backTop: config.backTop,
       // base
       menus: [],
       // 侧栏收起状态
@@ -54,6 +60,7 @@ export default {
         contentWidth: false,
         // 主题 'dark' | 'light'
         theme: config.navTheme,
+        multiTab: true,
         // 主色调
         primaryColor: '#1890ff',
         fixedHeader: config.fixedHeader,

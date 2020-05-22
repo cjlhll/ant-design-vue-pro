@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, BlankLayout } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
+import { i18nRender } from '@/locales'
 
 const RouteView = {
   name: 'RouteView',
@@ -22,13 +23,13 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/workplace',
         component: RouteView,
-        meta: { title: 'menu.dashboard', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
+        meta: { title: i18nRender('menu.dashboard'), keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
         children: [
           {
             path: '/dashboard/analysis/:pageNo([1-9]\\d*)?',
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: 'menu.dashboard.analysis', keepAlive: false, permission: [ 'dashboard' ] }
+            meta: { title: i18nRender('menu.dashboard'), keepAlive: false, permission: [ 'dashboard' ] }
           },
           // 外部链接
           {
@@ -40,7 +41,7 @@ export const asyncRouterMap = [
             path: '/dashboard/workplace',
             name: 'Workplace',
             component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: 'menu.dashboard.workplace', keepAlive: true, permission: [ 'dashboard' ] }
+            meta: { title: i18nRender('menu.dashboard.workplace'), keepAlive: true, permission: [ 'dashboard' ] }
           }
         ]
       },

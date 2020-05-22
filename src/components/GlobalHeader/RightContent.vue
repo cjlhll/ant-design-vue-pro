@@ -2,7 +2,7 @@
   <div :class="wrpCls">
     <full-screen/>
     <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" />
-    <select-lang :class="prefixCls" />
+    <select-lang :class="prefixCls" v-if="multiLang" />
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import AvatarDropdown from './AvatarDropdown'
 import SelectLang from '@/components/SelectLang'
 import FullScreen from '@/components/FullScreen'
+import config from '@/config/defaultSettings'
 
 export default {
   name: 'RightContent',
@@ -39,7 +40,8 @@ export default {
   data () {
     return {
       showMenu: true,
-      currentUser: {}
+      currentUser: {},
+      multiLang: config.multiLang
     }
   },
   computed: {

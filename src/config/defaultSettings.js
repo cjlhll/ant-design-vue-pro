@@ -25,9 +25,13 @@ export default {
   menu: {
     locale: true
   },
-  title: '5G-admin',
+  title: 'antdp-template',
   logo: require('../assets/logo.svg'),
-  multiTab: true,
+  multiTab: true, // 多tabs
+  lang: 'zh-CN', // 默认语言
+  multiLang: false, // 多语言
+  backTop: true, // 返回顶部按钮
+  tokenKey: 'token', // 存储的token key
   pwa: false,
   iconfontUrl: '',
   production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true'

@@ -15,6 +15,7 @@ import {
   APP_LANGUAGE
 } from '@/store/mutation-types'
 import { loadLanguageAsync } from '@/locales'
+import config from '../../config/defaultSettings'
 
 const app = {
   state: {
@@ -29,7 +30,7 @@ const app = {
     color: '',
     weak: false,
     multiTab: true,
-    lang: 'en-US',
+    lang: config.lang,
     _antLocale: {}
   },
   mutations: {

@@ -1,4 +1,5 @@
-export const ACCESS_TOKEN = 'Access-Token'
+import config from '../config/defaultSettings'
+export const ACCESS_TOKEN = config.tokenKey
 
 export const SIDEBAR_TYPE = 'sidebar_type'
 export const TOGGLE_MOBILE_TYPE = 'is_mobile'
