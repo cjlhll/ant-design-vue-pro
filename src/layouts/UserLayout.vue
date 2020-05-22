@@ -4,36 +4,29 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Ant Design</span>
+            <img :src="logo" class="logo" alt="logo">
+            <span class="title">{{ title }}</span>
           </a>
-        </div>
-        <div class="desc">
-          Ant Design 是西湖区最具影响力的 Web 设计规范
         </div>
       </div>
 
       <router-view />
-
-      <div class="footer">
-        <div class="links">
-          <a href="_self">帮助</a>
-          <a href="_self">隐私</a>
-          <a href="_self">条款</a>
-        </div>
-        <div class="copyright">
-          Copyright &copy; 2018 vueComponent
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { deviceMixin } from '@/store/device-mixin'
+import config from '../config/defaultSettings'
 
 export default {
   name: 'UserLayout',
+  data () {
+    return {
+      title: config.title,
+      logo: config.logo
+    }
+  },
   mixins: [deviceMixin],
   mounted () {
     document.body.classList.add('userLayout')
@@ -47,7 +40,6 @@ export default {
 <style lang="less" scoped>
 #userLayout.user-layout-wrapper {
     height: 100%;
-
     &.mobile {
       .container {
         .main {
@@ -71,7 +63,7 @@ export default {
 
       .top {
         text-align: center;
-
+        margin-bottom: 50px;
         .header {
           height: 44px;
           line-height: 44px;
@@ -101,12 +93,6 @@ export default {
             position: relative;
             top: 2px;
           }
-        }
-        .desc {
-          font-size: 14px;
-          color: rgba(0, 0, 0, 0.45);
-          margin-top: 12px;
-          margin-bottom: 40px;
         }
       }
 

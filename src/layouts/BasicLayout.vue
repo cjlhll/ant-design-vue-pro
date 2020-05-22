@@ -1,6 +1,6 @@
 <template>
   <pro-layout
-    title="Ant Design Pro"
+    :title="title"
     :menus="menus"
     :collapsed="collapsed"
     :mediaQuery="query"
@@ -27,6 +27,7 @@ import { SettingDrawer } from '@ant-design-vue/pro-layout'
 import { i18nRender } from '@/locales'
 import { mapState } from 'vuex'
 import { SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mutation-types'
+import config from '../config/defaultSettings'
 
 import RightContent from '@/components/GlobalHeader/RightContent'
 import GlobalFooter from '@/components/GlobalFooter'
@@ -41,21 +42,22 @@ export default {
   },
   data () {
     return {
+      title: config.title,
       // base
       menus: [],
       // 侧栏收起状态
       collapsed: false,
       settings: {
         // 布局类型
-        layout: 'sidemenu', // 'sidemenu', 'topmenu'
+        layout: config.layout, // 'sidemenu', 'topmenu'
         // 定宽: true / 流式: false
         contentWidth: false,
         // 主题 'dark' | 'light'
-        theme: 'dark',
+        theme: config.navTheme,
         // 主色调
         primaryColor: '#1890ff',
-        fixedHeader: false,
-        fixSiderbar: false,
+        fixedHeader: config.fixedHeader,
+        fixSiderbar: config.fixSiderbar,
         colorWeak: false,
 
         hideHintAlert: false,

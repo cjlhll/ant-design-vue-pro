@@ -9,6 +9,7 @@
 <script>
 import { domTitle, setDocumentTitle } from '@/utils/domUtil'
 import { i18nRender } from '@/locales'
+import config from './config/defaultSettings'
 
 export default {
   data () {
@@ -23,6 +24,9 @@ export default {
 
       return this.$i18n.getLocaleMessage(this.$store.getters.lang).antLocale
     }
+  },
+  created () {
+    setDocumentTitle(config.title)
   }
 }
 </script>

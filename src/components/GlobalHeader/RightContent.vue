@@ -1,5 +1,6 @@
 <template>
   <div :class="wrpCls">
+    <full-screen/>
     <avatar-dropdown :menu="showMenu" :current-user="currentUser" :class="prefixCls" />
     <select-lang :class="prefixCls" />
   </div>
@@ -8,12 +9,14 @@
 <script>
 import AvatarDropdown from './AvatarDropdown'
 import SelectLang from '@/components/SelectLang'
+import FullScreen from '@/components/FullScreen'
 
 export default {
   name: 'RightContent',
   components: {
     AvatarDropdown,
-    SelectLang
+    SelectLang,
+    FullScreen
   },
   props: {
     prefixCls: {
