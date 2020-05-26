@@ -25,7 +25,7 @@ export default {
   menu: {
     locale: true
   },
-  title: 'antdp-template',
+  title: '5G-admin',
   logo: require('../assets/logo.svg'),
   multiTab: true, // 多tabs
   lang: 'zh-CN', // 默认语言

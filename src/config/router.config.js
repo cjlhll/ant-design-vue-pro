@@ -15,37 +15,40 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/dashboard/analysis',
     children: [
       // dashboard
       {
         path: '/dashboard',
         name: 'dashboard',
-        redirect: '/dashboard/workplace',
+        redirect: '/dashboard/analysis',
         component: RouteView,
-        meta: { title: i18nRender('menu.dashboard'), keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
+        meta: { title: i18nRender('menu.home'), keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
         children: [
           {
             path: '/dashboard/analysis/:pageNo([1-9]\\d*)?',
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: i18nRender('menu.dashboard'), keepAlive: false, permission: [ 'dashboard' ] }
-          },
-          // 外部链接
-          {
-            path: 'https://www.baidu.com/',
-            name: 'Monitor',
-            meta: { title: 'menu.dashboard.monitor', target: '_blank' }
-          },
-          {
-            path: '/dashboard/workplace',
-            name: 'Workplace',
-            component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: i18nRender('menu.dashboard.workplace'), keepAlive: true, permission: [ 'dashboard' ] }
+            meta: { title: i18nRender('menu.home'), keepAlive: false, permission: [ 'dashboard' ] }
           }
         ]
       },
-
+      {
+        path: '/member',
+        name: 'member',
+        component: RouteView,
+        redirect: '/member/member-list',
+        meta: { title: '会员管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/member/member-list/:pageNo([1-9]\\d*)?',
+            name: 'MemberList',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/member/MemberList'),
+            meta: { title: '会员列表', keepAlive: true, permission: ['table'] }
+          }
+        ]
+      },
       // forms
       {
         path: '/form',
